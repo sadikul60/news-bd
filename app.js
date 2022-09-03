@@ -7,16 +7,30 @@ const loadCategory = async() => {
 };
 // loadCategory end
 
+
+
+// toggleSpinner
+const toggleSpinner = isLoading => {
+  const loaderSection = document.getElementById('spinner-loader');
+  if (isLoading){
+      loaderSection.classList.remove('d-none')
+  }
+  else {
+      loaderSection.classList.add('d-none')
+  }
+}
+
+
+
 // displayCategory start
 const displayCategory = categories =>{
+
   const categoryContainer = document.getElementById('category-container');
   categoryContainer.textContent = '';
-
     categories.forEach(category =>{
         // console.log(category);
 
         const categoryDiv = document.createElement('div');
-
         categoryDiv.innerHTML = `
         <div> <a onclick="loadData('${category.category_id}')" class="nav-link" aria-current="page" href="#"><span class="h4 text-info">${category.category_name}</span></a>
         </div>
@@ -27,8 +41,12 @@ const displayCategory = categories =>{
 // displayCategory end
 
 
+
+
 // loadData start
 const loadData = async (id) =>{
+  // start toggleSpinner
+  toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -36,15 +54,32 @@ const loadData = async (id) =>{
 };
 // loadData end
 
+
+
 // displayData start 
 const displayData = categories =>{
+  const noData = document.getElementById('no-data-found');
+  if(categories.length === 0){
+    noData.classList.remove('d-none');
+    toggleSpinner(false);
+  }
+  else{
+    noData.classList.add('d-none');
+    toggleSpinner(true);
+  }
+
   const categoriesContainer = document.getElementById('categories-container');
   categoriesContainer.textContent = '';
     // console.log(categories);
         categories.forEach(category => {
+            
           // console.log(category)
           const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('card');
+
+        // start toggleSpinner
+        toggleSpinner(true);
+
         categoryDiv.innerHTML = `
         <div class="row">
               <div class="col-md-4">
@@ -74,9 +109,13 @@ const displayData = categories =>{
             </div>
         `;
         categoriesContainer.appendChild(categoryDiv);
+        // stop toggleSpinner
+        toggleSpinner(false);
         });
   };
 // displayData end 
+
+
 
 
 // loadCategoryDetails start
@@ -128,9 +167,11 @@ const displayCategoryDetails = category =>{
       <h5 class="mx-5">Details: ${category.details ? category.details : 'No Data Found'}</h5>
       </div>
     </div>
-
   `;
 };
+
+
+
 // displayCategoryDetails end
 
 loadCategory();
