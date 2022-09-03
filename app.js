@@ -106,13 +106,13 @@ const displayData = categories =>{
                   <h3 class="card-title">${category.title ? category.title : 'No data Found'}</h3>
                   <p class="card-text h5 mb-5">${category.details.slice(0, 400)}.....</p>
                   <div class="d-block d-sm-block d-md-flex d-lg-flex pt-5 align-items-center sm-text-center justify-content-between">
-                    <div class="d-block d-sm-block d-md-flex d-lg-flex sm-mt-5  align-items-center">
+                    <div class="d-block d-sm-block d-md-flex d-lg-flex sm-mt-5  align-items-center justify-content-center text-center text-sm-center text-md-left text-lg-left">
                       <img src="${category.author.img ? category.author.img : 'No data Found'}" class=" author-image rounded-circle" alt="...">
                       <p class="card-text h4 ms-2"><strong><span>${category.author.name ? category.author.name : 'No data Fuound'}</span></br> ${category.author.published_date ? category.author.published_date : 'No data Fuound'}</strong></p>
                     </div>
 
                       <div class="d-flex xl-ps-5">
-                        <p class="card-text h4"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
+                        <p class="card-text h4 text-center text-sm-center text-md-center text-lg-center"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
                       </div>
                       <div>
                         <div class="card-text h4 text-right p-0 me-5"> 
@@ -180,7 +180,7 @@ const displayCategoryDetails = category =>{
       </div>
         <h3 class="my-5">Total View: ${category.total_view ? category.total_view : 'No Data Found'}</h3>
       <div class="text-left">
-      <h3>Dtails</h3>
+      <h3>Dtails:</h3>
       <h5 class="mx-5">Details: ${category.details ? category.details : 'No Data Found'}</h5>
       </div>
     </div>
