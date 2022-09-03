@@ -192,7 +192,7 @@ const displayCategoryDetails = category =>{
 
 // displayCategoryDetails end
 
-loadCategory();
+loadCategory('01');
 
 
 
