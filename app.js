@@ -66,7 +66,7 @@ const displayData = categories =>{
   const categoryText = document.getElementById('category-text');
   
   if (categories.length === 0){
-    categoriesNumber.innerText = 'No Category found'
+    categoriesNumber.innerText = 'No Category Numbers found'
     categoryText.classList.add('d-none');
   }
   else {
@@ -104,18 +104,18 @@ const displayData = categories =>{
               <div class="col-12 col-sm-12 col-md-6 col-lg-8">
                 <div class="card-body">
                   <h3 class="card-title">${category.title ? category.title : 'No data Found'}</h3>
-                  <p class="card-text">${category.details.slice(0, 300)}.....</p>
-                  <div class="d-block d-sm-block d-md-flex d-lg-flex pt-5 align-items-center justify-content-between">
-                    <div class="d-block d-sm-block d-md-flex d-lg-flex">
+                  <p class="card-text h5 mb-5">${category.details.slice(0, 400)}.....</p>
+                  <div class="d-block d-sm-block d-md-flex d-lg-flex pt-5 align-items-center sm-text-center justify-content-between">
+                    <div class="d-block d-sm-block d-md-flex d-lg-flex sm-mt-5  align-items-center">
                       <img src="${category.author.img ? category.author.img : 'No data Found'}" class=" author-image rounded-circle" alt="...">
-                      <p class="card-text ms-2"><strong><span>${category.author.name ? category.author.name : 'No data Fuound'}</span></br> ${category.author.published_date ? category.author.published_date : 'No data Fuound'}</strong></p>
+                      <p class="card-text h4 ms-2"><strong><span>${category.author.name ? category.author.name : 'No data Fuound'}</span></br> ${category.author.published_date ? category.author.published_date : 'No data Fuound'}</strong></p>
                     </div>
 
                       <div class="d-flex xl-ps-5">
-                        <p class="card-text"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
+                        <p class="card-text h4"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
                       </div>
                       <div>
-                        <div class="card-text text-right p-0 me-5"> 
+                        <div class="card-text h4 text-right p-0 me-5"> 
                           <a onclick="loadCategoryDetails('${category._id}')" class="nav-link"  data-bs-toggle="modal" data-bs-target="#categoryDetailsModal" aria-current="page" href="#"><strong><span>MORE</span> <i class="fa-solid fa-arrow-right"></i></strong></a>
                         </div>
                       </div>
