@@ -58,6 +58,12 @@ const loadData = async (id) =>{
 
 // displayData start 
 const displayData = categories =>{
+  // console.log(categories)
+  const categoriesLength = (categories.length);
+
+  const categoriesNumber = document.getElementById('category-number');
+  categoriesNumber.innerText = categoriesLength;
+  
   const noData = document.getElementById('no-data-found');
   if(categories.length === 0){
     noData.classList.remove('d-none');
@@ -69,12 +75,13 @@ const displayData = categories =>{
     toggleSpinner(true);
   }
 
+
   const categoriesContainer = document.getElementById('categories-container');
   categoriesContainer.textContent = '';
     // console.log(categories);
         categories.forEach(category => {
             
-          // console.log(category)
+          
           const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('card');
 
@@ -82,7 +89,7 @@ const displayData = categories =>{
         toggleSpinner(true);
 
         categoryDiv.innerHTML = `
-        <div class="row">
+        <div class="row shadow-lg p-3 mb-5 bg-body rounded border-0">
               <div class="col-md-4">
                 <img src="${category.thumbnail_url}" class="img-fluid rounded-start" alt="...">
               </div>
@@ -131,7 +138,7 @@ const loadCategoryDetails = async (news_id) =>{
 
 // displayCategoryDetails start
 const displayCategoryDetails = category =>{
-  console.log(category);
+  // console.log(category);
   
     const categoryTitle = document.getElementById('categoryDetailsModalLabel');
   categoryTitle.innerText = category.title;
