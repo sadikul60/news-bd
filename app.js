@@ -63,7 +63,15 @@ const displayData = categories =>{
 
   const categoriesNumber = document.getElementById('category-number');
   categoriesNumber.innerText = categoriesLength;
+  const categoryText = document.getElementById('category-text');
   
+  if (categories.length === 0){
+    categoriesNumber.innerText = 'No Category found'
+    categoryText.classList.add('d-none');
+  }
+  else {
+    categoryText.classList.remove('d-none')
+  }
   const noData = document.getElementById('no-data-found');
   if(categories.length === 0){
     noData.classList.remove('d-none');
@@ -90,20 +98,20 @@ const displayData = categories =>{
 
         categoryDiv.innerHTML = `
         <div class="row shadow-lg p-3 mb-5 bg-body rounded border-0">
-              <div class="col-md-4">
-                <img src="${category.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                <img src="${category.thumbnail_url}" class="img-fluid w-100 rounded-start" alt="...">
               </div>
-              <div class="col-md-8">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-8">
                 <div class="card-body">
                   <h3 class="card-title">${category.title ? category.title : 'No data Found'}</h3>
                   <p class="card-text">${category.details.slice(0, 300)}.....</p>
-                  <div class="d-flex pt-5 align-items-center justify-content-between">
-                    <div class="d-flex">
+                  <div class="d-block d-sm-block d-md-flex d-lg-flex pt-5 align-items-center justify-content-between">
+                    <div class="d-block d-sm-block d-md-flex d-lg-flex">
                       <img src="${category.author.img ? category.author.img : 'No data Found'}" class=" author-image rounded-circle" alt="...">
                       <p class="card-text ms-2"><strong><span>${category.author.name ? category.author.name : 'No data Fuound'}</span></br> ${category.author.published_date ? category.author.published_date : 'No data Fuound'}</strong></p>
                     </div>
 
-                      <div class="d-flex ps-5">
+                      <div class="d-flex xl-ps-5">
                         <p class="card-text"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
                       </div>
                       <div>
