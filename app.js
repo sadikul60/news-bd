@@ -111,8 +111,8 @@ const displayData = categories =>{
                       <p class="card-text h4 ms-2"><strong><span>${category.author.name ? category.author.name : 'No data Fuound'}</span></br> ${category.author.published_date ? category.author.published_date : 'No data Fuound'}</strong></p>
                     </div>
 
-                      <div class="d-flex xl-ps-5">
-                        <p class="card-text h4 text-center text-sm-center text-md-center text-lg-center"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
+                      <div class="d-flex mt-4 mb-4 xl-ps-5">
+                        <p class="card-text h4 text-center"><strong><span class="me-2"> <i class="fa-solid fa-eye"></i></span>${category.rating.number ? category.rating.number : 'No data Fuound'}M</strong></p>
                       </div>
                       <div>
                         <div class="card-text h4 text-right p-0 me-5"> 
