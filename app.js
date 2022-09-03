@@ -61,6 +61,7 @@ const displayData = categories =>{
   const noData = document.getElementById('no-data-found');
   if(categories.length === 0){
     noData.classList.remove('d-none');
+    // stop toggleSpinner
     toggleSpinner(false);
   }
   else{
@@ -89,7 +90,7 @@ const displayData = categories =>{
                 <div class="card-body">
                   <h3 class="card-title">${category.title ? category.title : 'No data Found'}</h3>
                   <p class="card-text">${category.details.slice(0, 300)}.....</p>
-                  <div class="d-flex pt-5 justify-content-between">
+                  <div class="d-flex pt-5 align-items-center justify-content-between">
                     <div class="d-flex">
                       <img src="${category.author.img ? category.author.img : 'No data Found'}" class=" author-image rounded-circle" alt="...">
                       <p class="card-text ms-2"><strong><span>${category.author.name ? category.author.name : 'No data Fuound'}</span></br> ${category.author.published_date ? category.author.published_date : 'No data Fuound'}</strong></p>
@@ -120,6 +121,7 @@ const displayData = categories =>{
 
 // loadCategoryDetails start
 const loadCategoryDetails = async (news_id) =>{
+  toggleSpinner(true);
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -168,6 +170,7 @@ const displayCategoryDetails = category =>{
       </div>
     </div>
   `;
+  toggleSpinner(false);
 };
 
 
