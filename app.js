@@ -65,7 +65,7 @@ const displayData = categories =>{
                       </div>
                       <div>
                         <div class="card-text text-right p-0 me-5"> 
-                          <a onclick="loadCategoryDetails('${category.category_id}')" class="nav-link"  data-bs-toggle="modal" data-bs-target="#categoryDetailsModal" aria-current="page" href="#"><strong><span>MORE</span> <i class="fa-solid fa-arrow-right"></i></strong></a>
+                          <a onclick="loadCategoryDetails('${category._id}')" class="nav-link"  data-bs-toggle="modal" data-bs-target="#categoryDetailsModal" aria-current="page" href="#"><strong><span>MORE</span> <i class="fa-solid fa-arrow-right"></i></strong></a>
                         </div>
                       </div>
                   </div>
@@ -80,8 +80,8 @@ const displayData = categories =>{
 
 
 // loadCategoryDetails start
-const loadCategoryDetails = async (detailsId) =>{
-  const url = ` https://openapi.programming-hero.com/api/news/category/${detailsId}`;
+const loadCategoryDetails = async (news_id) =>{
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
   const res = await fetch(url);
   const data = await res.json();
   displayCategoryDetails(data.data[0]);
@@ -97,9 +97,38 @@ const displayCategoryDetails = category =>{
 
   const categoryDetails = document.getElementById('category-details');
   categoryDetails.innerHTML = `
-  <div class="col-md-4">
-  <img src="${category.image_url}" class="img-fluid" alt="...">
-</div>
+    <div class="text-center">
+      <img src="${category.image_url ? category.image_url : 'No Data Found'}" class="img-fluid" alt="...">
+    </div>
+    <div class="mt-5">
+      <h3> Author:</h3>
+      <div class="ms-5">
+      <h4>Name: ${category.author.name ? category.author.name : 'No Name Found'}</h4>
+      <h5>Published Date: ${category.author.published_date ? category.author.published_date : 'No Data Found'}</h5>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h3>Others Info :</h3>
+      <div class="ms-5">
+      <h5>Is Todays Pick: ${category.others_info.is_todays_pick ? category.others_info.is_todays_pick : 'No Data Found'}</h5>
+      <h5>Is Trending: ${category.others_info.is_trending ? category.others_info.is_trending : 'No Data Found'}</h5>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h3>Rating :</h3>
+      <div class="ms-5">
+      <h5>Badge: ${category.rating.badge ? category.rating.badge : 'No Data Found'}</h5>
+      <h5>Number: ${category.rating.number ? category.rating.number : 'No Data Found'}</h5>
+      </div>
+        <h3 class="my-5">Total View: ${category.total_view ? category.total_view : 'No Data Found'}</h3>
+      <div class="text-left">
+      <h3>Dtails</h3>
+      <h5 class="mx-5">Details: ${category.details ? category.details : 'No Data Found'}</h5>
+      </div>
+    </div>
+
   `;
 };
 // displayCategoryDetails end
